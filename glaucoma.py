@@ -33,11 +33,12 @@ pachymetry = st.sidebar.slider("Pachymetry (µm)", min_value=450, max_value=650,
 
 # Categorical features
 gender = st.sidebar.selectbox("Gender", ["Male", "Female"])
+visual_acuity = st.sidebar.selectbox("Visual Acuity Measurements", ["Normal", "Reduced"])
 family_history = st.sidebar.selectbox("Family History", ["Yes", "No"])
 cataract = st.sidebar.selectbox("Cataract Status", ["Present", "Absent"])
 angle_closure = st.sidebar.selectbox("Angle Closure Status", ["Yes", "No"])
 diagnosis = st.sidebar.selectbox("Diagnosis", ["Glaucoma Suspect", "Confirmed", "None"])
-visual_acuity = st.sidebar.selectbox("Visual Acuity Measurements", ["Normal", "Reduced"])
+
 
 # ------------------ Preprocessing Function ------------------
 def preprocess_input(age, iop, cdr, pachymetry, gender, family_history, cataract, angle_closure, diagnosis, visual_acuity):
@@ -101,6 +102,7 @@ st.write("""
 3. Select categorical features like Gender, Family History, etc.
 4. Click **Predict Glaucoma Type** to see the result.
 """)
+
 
 
 
