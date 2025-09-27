@@ -89,6 +89,13 @@ if st.sidebar.button("Predict Glaucoma Type"):
         st.success(f"The predicted **Glaucoma Type** is: {predicted_label}")
     except Exception as e:
         st.error(f"Error during prediction: {str(e)}")
+# Load feature names
+with open("features.pkl", "rb") as f:
+    feature_columns = pickle.load(f)
+
+# After building your input_df
+input_df = input_df.reindex(columns=feature_columns, fill_value=0)
+
 
 # ------------------ Instructions ------------------
 st.write("""
@@ -98,3 +105,4 @@ st.write("""
 3. Select categorical features like Gender, Family History, etc.
 4. Click **Predict Glaucoma Type** to see the result.
 """)
+
