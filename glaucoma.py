@@ -52,21 +52,23 @@ def preprocess_input(age, iop, cdr, pachymetry, gender, family_history, cataract
 
     # One-hot encode categorical features
     df[f"Gender_{gender}"] = 1
+    df[f"Visual Acuity Measurements_{visual_acuity}"] = 1
     df[f"Family History_{family_history}"] = 1
     df[f"Cataract Status_{cataract}"] = 1
     df[f"Angle Closure Status_{angle_closure}"] = 1
     df[f"Diagnosis_{diagnosis}"] = 1
-    df[f"Visual Acuity Measurements_{visual_acuity}"] = 1
+    
 
     # Expected columns (must match training)
     expected_columns = [
         "Age", "Intraocular Pressure (IOP)", "Cup-to-Disc Ratio (CDR)", "Pachymetry",
         "Gender_Female", "Gender_Male",
+        "Visual Acuity Measurements_Normal", "Visual Acuity Measurements_Reduced",
         "Family History_Yes", "Family History_No",
         "Cataract Status_Present", "Cataract Status_Absent",
         "Angle Closure Status_Yes", "Angle Closure Status_No",
-        "Diagnosis_Glaucoma Suspect", "Diagnosis_Confirmed", "Diagnosis_None",
-        "Visual Acuity Measurements_Normal", "Visual Acuity Measurements_Reduced"
+        "Diagnosis_Glaucoma Suspect", "Diagnosis_Confirmed", "Diagnosis_None"
+       
     ]
 
     # Add missing columns with 0
@@ -102,6 +104,7 @@ st.write("""
 3. Select categorical features like Gender, Family History, etc.
 4. Click **Predict Glaucoma Type** to see the result.
 """)
+
 
 
 
